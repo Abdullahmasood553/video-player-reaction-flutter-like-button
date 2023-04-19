@@ -153,169 +153,178 @@ class _MyAppState extends State<MyApp> {
           title: const Text("Reaction Button Example"),
           centerTitle: true,
         ),
-        body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20),
-            // width: double.infinity,
-            // height: 50,
-            decoration: roundGrey,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                LikeButton(
-                  size: 40,
-                  circleColor: CircleColor(
-                      start: Colors.red, end: Colors.red.withOpacity(0.1)),
-                  bubblesColor: const BubblesColor(
-                    dotPrimaryColor: Colors.red,
-                    dotSecondaryColor: Colors.redAccent,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+              // width: double.infinity,
+              // height: 50,
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.circular(100),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  LikeButton(
+                    size: 40,
+                    circleColor: CircleColor(
+                        start: Colors.red, end: Colors.red.withOpacity(0.1)),
+                    bubblesColor: const BubblesColor(
+                      dotPrimaryColor: Colors.red,
+                      dotSecondaryColor: Colors.redAccent,
+                    ),
+                    likeBuilder: (bool isLiked) {
+                      return Icon(
+                        Icons.thumb_up,
+                        color: isLiked ? Colors.blue : Colors.grey,
+                      );
+                    },
+                    onTap: (bool isLiked) async {
+                      if (!isLiked) {
+                        setState(() {
+                          _selectedOption = 1;
+                        });
+                      } else {
+                        setState(() {
+                          _selectedOption = 0;
+                        });
+                      }
+                      print(!isLiked);
+                      return Future.value(!isLiked);
+                    },
+                    isLiked: _selectedOption == 1,
                   ),
-                  likeBuilder: (bool isLiked) {
-                    return Icon(
-                      Icons.thumb_up,
-                      color: isLiked ? Colors.blue : Colors.grey,
-                    );
-                  },
-                  onTap: (bool isLiked) async {
-                    if (!isLiked) {
-                      setState(() {
-                        _selectedOption = 1;
-                      });
-                    } else {
-                      setState(() {
-                        _selectedOption = 0;
-                      });
-                    }
-                    print(!isLiked);
-                    return Future.value(!isLiked);
-                  },
-                  isLiked: _selectedOption == 1,
-                ),
-                LikeButton(
-                  size: 40,
-                  circleColor: CircleColor(
-                      start: Colors.yellow,
-                      end: Colors.yellow.withOpacity(0.1)),
-                  bubblesColor: const BubblesColor(
-                    dotPrimaryColor: Colors.yellow,
-                    dotSecondaryColor: Colors.yellowAccent,
+                  LikeButton(
+                    size: 40,
+                    circleColor: CircleColor(
+                        start: Colors.yellow,
+                        end: Colors.yellow.withOpacity(0.1)),
+                    bubblesColor: const BubblesColor(
+                      dotPrimaryColor: Colors.yellow,
+                      dotSecondaryColor: Colors.yellowAccent,
+                    ),
+                    likeBuilder: (bool isLiked) {
+                      return Icon(
+                        Icons.star,
+                        color: isLiked ? Colors.yellow : Colors.grey,
+                        size: 30,
+                      );
+                    },
+                    onTap: (bool isLiked) async {
+                      if (!isLiked) {
+                        setState(() {
+                          _selectedOption = 2;
+                        });
+                      } else {
+                        setState(() {
+                          _selectedOption = 0;
+                        });
+                      }
+                      print(!isLiked);
+                      return Future.value(!isLiked);
+                    },
+                    isLiked: _selectedOption == 2,
                   ),
-                  likeBuilder: (bool isLiked) {
-                    return Icon(
-                      Icons.star,
-                      color: isLiked ? Colors.yellow : Colors.grey,
-                      size: 30,
-                    );
-                  },
-                  onTap: (bool isLiked) async {
-                    if (!isLiked) {
-                      setState(() {
-                        _selectedOption = 2;
-                      });
-                    } else {
-                      setState(() {
-                        _selectedOption = 0;
-                      });
-                    }
-                    print(!isLiked);
-                    return Future.value(!isLiked);
-                  },
-                  isLiked: _selectedOption == 2,
-                ),
-                LikeButton(
-                  size: 40,
-                  circleColor: CircleColor(
-                      start: Colors.green, end: Colors.green.withOpacity(0.1)),
-                  bubblesColor: const BubblesColor(
-                    dotPrimaryColor: Colors.green,
-                    dotSecondaryColor: Colors.greenAccent,
+                  LikeButton(
+                    size: 40,
+                    circleColor: CircleColor(
+                        start: Colors.green,
+                        end: Colors.green.withOpacity(0.1)),
+                    bubblesColor: const BubblesColor(
+                      dotPrimaryColor: Colors.green,
+                      dotSecondaryColor: Colors.greenAccent,
+                    ),
+                    likeBuilder: (bool isLiked) {
+                      return Icon(
+                        Icons.sentiment_satisfied_alt_outlined,
+                        color: isLiked ? Colors.green : Colors.grey,
+                        size: 30,
+                      );
+                    },
+                    onTap: (bool isLiked) {
+                      if (!isLiked) {
+                        setState(() {
+                          _selectedOption = 3;
+                        });
+                      } else {
+                        setState(() {
+                          _selectedOption = 0;
+                        });
+                      }
+                      print(!isLiked);
+                      return Future.value(!isLiked);
+                    },
+                    isLiked: _selectedOption == 3,
                   ),
-                  likeBuilder: (bool isLiked) {
-                    return Icon(
-                      Icons.sentiment_satisfied_alt_outlined,
-                      color: isLiked ? Colors.green : Colors.grey,
-                      size: 30,
-                    );
-                  },
-                  onTap: (bool isLiked) {
-                    if (!isLiked) {
-                      setState(() {
-                        _selectedOption = 3;
-                      });
-                    } else {
-                      setState(() {
-                        _selectedOption = 0;
-                      });
-                    }
-                    print(!isLiked);
-                    return Future.value(!isLiked);
-                  },
-                  isLiked: _selectedOption == 3,
-                ),
-                LikeButton(
-                  size: 40,
-                  circleColor: CircleColor(
-                      start: Colors.green, end: Colors.green.withOpacity(0.1)),
-                  bubblesColor: const BubblesColor(
-                    dotPrimaryColor: Colors.green,
-                    dotSecondaryColor: Colors.greenAccent,
+                  LikeButton(
+                    size: 40,
+                    circleColor: CircleColor(
+                        start: Colors.green,
+                        end: Colors.green.withOpacity(0.1)),
+                    bubblesColor: const BubblesColor(
+                      dotPrimaryColor: Colors.green,
+                      dotSecondaryColor: Colors.greenAccent,
+                    ),
+                    likeBuilder: (bool isLiked) {
+                      return Icon(
+                        Icons.emoji_emotions_outlined,
+                        color: isLiked ? Colors.green : Colors.grey,
+                        size: 30,
+                      );
+                    },
+                    onTap: (bool isLiked) {
+                      if (!isLiked) {
+                        setState(() {
+                          _selectedOption = 4;
+                        });
+                      } else {
+                        setState(() {
+                          _selectedOption = 0;
+                        });
+                      }
+                      print(!isLiked);
+                      return Future.value(!isLiked);
+                    },
+                    isLiked: _selectedOption == 4,
                   ),
-                  likeBuilder: (bool isLiked) {
-                    return Icon(
-                      Icons.emoji_emotions_outlined,
-                      color: isLiked ? Colors.green : Colors.grey,
-                      size: 30,
-                    );
-                  },
-                  onTap: (bool isLiked) {
-                    if (!isLiked) {
-                      setState(() {
-                        _selectedOption = 4;
-                      });
-                    } else {
-                      setState(() {
-                        _selectedOption = 0;
-                      });
-                    }
-                    print(!isLiked);
-                    return Future.value(!isLiked);
-                  },
-                  isLiked: _selectedOption == 4,
-                ),
-                LikeButton(
-                  size: 40,
-                  circleColor: CircleColor(
-                      start: Colors.green, end: Colors.green.withOpacity(0.1)),
-                  bubblesColor: const BubblesColor(
-                    dotPrimaryColor: Colors.green,
-                    dotSecondaryColor: Colors.greenAccent,
+                  LikeButton(
+                    size: 40,
+                    circleColor: CircleColor(
+                        start: Colors.green,
+                        end: Colors.green.withOpacity(0.1)),
+                    bubblesColor: const BubblesColor(
+                      dotPrimaryColor: Colors.green,
+                      dotSecondaryColor: Colors.greenAccent,
+                    ),
+                    likeBuilder: (bool isLiked) {
+                      return Icon(
+                        Icons.favorite_outline_outlined,
+                        color: isLiked ? Colors.green : Colors.grey,
+                        size: 30,
+                      );
+                    },
+                    onTap: (bool isLiked) {
+                      if (!isLiked) {
+                        setState(() {
+                          _selectedOption = 5;
+                        });
+                      } else {
+                        setState(() {
+                          _selectedOption = 0;
+                        });
+                      }
+                      print(!isLiked);
+                      return Future.value(!isLiked);
+                    },
+                    isLiked: _selectedOption == 5,
                   ),
-                  likeBuilder: (bool isLiked) {
-                    return Icon(
-                      Icons.favorite_outline_outlined,
-                      color: isLiked ? Colors.green : Colors.grey,
-                      size: 30,
-                    );
-                  },
-                  onTap: (bool isLiked) {
-                    if (!isLiked) {
-                      setState(() {
-                        _selectedOption = 5;
-                      });
-                    } else {
-                      setState(() {
-                        _selectedOption = 0;
-                      });
-                    }
-                    print(!isLiked);
-                    return Future.value(!isLiked);
-                  },
-                  isLiked: _selectedOption == 5,
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ]),
+          ],
+        ),
       ),
     );
   }
